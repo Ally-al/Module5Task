@@ -4,7 +4,7 @@ import android.app.Application
 import com.example.app.di.AppComponent
 import com.example.app.di.DaggerAppComponent
 import com.example.core.di.DaggerCoreComponent
-import com.example.feature_home.di.DaggerHomeComponent
+import com.example.feature_home.di.HomeComponent
 
 class DaggerApplication : Application() {
 
@@ -15,9 +15,7 @@ class DaggerApplication : Application() {
 
         val coreComponent = DaggerCoreComponent.create()
 
-        val homeComponent = DaggerHomeComponent.builder()
-            .coreComponent(coreComponent)
-            .build()
+        val homeComponent = HomeComponent.create(coreComponent)
 
         appComponent = DaggerAppComponent.builder()
             .homeComponent(homeComponent)

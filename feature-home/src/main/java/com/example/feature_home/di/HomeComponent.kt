@@ -13,4 +13,12 @@ interface HomeComponent {
         fun coreComponent(coreComponent: CoreComponent): Builder
         fun build(): HomeComponent
     }
+
+    companion object {
+        fun create(coreComponent: CoreComponent): HomeComponent {
+            return DaggerHomeComponent.builder()
+                .coreComponent(coreComponent)
+                .build()
+        }
+    }
 }
